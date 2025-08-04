@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>RetroCode Analyzer - AI-Powered Code Analysis</title>
+    <meta name="title" content="RetroCode Analyzer - AI-Powered Code Analysis">
+    <meta name="description" content="Transform your code with futuristic AI analysis. Get instant insights on quality, security, and performance with our cutting-edge analyzer.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://retrocode-analyzer.vercel.app/">
+    <meta property="og:title" content="RetroCode Analyzer - AI-Powered Code Analysis">
+    <meta property="og:description" content="Transform your code with futuristic AI analysis. Get instant insights on quality, security, and performance with our cutting-edge analyzer.">
+    <meta property="og:image" content="/og-image.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://retrocode-analyzer.vercel.app/">
+    <meta property="twitter:title" content="RetroCode Analyzer - AI-Powered Code Analysis">
+    <meta property="twitter:description" content="Transform your code with futuristic AI analysis. Get instant insights on quality, security, and performance with our cutting-edge analyzer.">
+    <meta property="twitter:image" content="/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <meta name="theme-color" content="#00d4ff">
+    <meta name="color-scheme" content="dark">
+    
+    <style>
+      /* Prevent flash of unstyled content */
+      body {
+        background: #0a0a0f;
+        color: #ffffff;
+        font-family: 'Inter', system-ui, sans-serif;
+      }
+      
+      /* Loading screen */
+      #loading {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(135deg, #0a0a0f 0%, #141419 50%, #1e1e26 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      .loading-spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(0, 212, 255, 0.3);
+        border-top: 4px solid #00d4ff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loading-text {
+        margin-top: 20px;
+        color: #a0a0a8;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading">
+      <div style="text-align: center;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading RetroCode Analyzer...</div>
+      </div>
+    </div>
+    
+    <div id="root"></div>
+    
+    <script>
+      // Hide loading screen when React app loads
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const loading = document.getElementById('loading');
+          if (loading) {
+            loading.style.opacity = '0';
+            // Add pointer-events: none after fade out, then remove
+            setTimeout(() => {
+              if (loading) { // Check again in case it was removed by something else
+                loading.style.pointerEvents = 'none'; // <-- THIS IS THE KEY LINE ADDED
+                loading.remove();
+              }
+            }, 500); // This timeout should match the CSS transition duration
+          }
+        }, 500); // Initial delay before fading out
+      });
+    </script>
+    
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
