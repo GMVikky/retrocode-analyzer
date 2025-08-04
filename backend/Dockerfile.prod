@@ -1,4 +1,6 @@
-FROM python:3.11-slim as builder
+# backend/Dockerfile.prod - CORRECTED PYTHON VERSION
+
+FROM python:3.10.11-slim as builder # CHANGED FROM 3.11
 
 # Set working directory
 WORKDIR /app
@@ -16,7 +18,7 @@ RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
 
 # Production stage
-FROM python:3.11-slim
+FROM python:3.10.11-slim # CHANGED FROM 3.11
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -37,7 +39,7 @@ RUN useradd --create-home --shell /bin/bash app
 WORKDIR /app
 
 # Copy Python dependencies from builder
-COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
+COPY --from=builder /usr/local/lib/python3.10.11/site-packages /usr/local/lib/python3.10.11/site-packages # Updated path for 3.10.11
 COPY --from=builder /usr/local/bin /usr/local/bin
 
 # Copy application code
@@ -57,5 +59,5 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
 # Expose port
 EXPOSE 8000
 
-# Run the application
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+# Run the application (Corrected for Render deployment, uses $PORT and 4 workers)
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "$PORT", "--workers", "4"]
