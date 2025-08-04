@@ -1,5 +1,3 @@
-// src/types/index.ts - COMPLETE & CONSOLIDATED TYPE DEFINITIONS
-
 export interface User {
   id: number;
   email: string;

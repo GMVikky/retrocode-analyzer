@@ -1,5 +1,3 @@
-// src/components/Analyzer/AnalysisHeader.tsx - ENHANCED VERSION
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { History, Plus, Edit3, Sparkles } from 'lucide-react';

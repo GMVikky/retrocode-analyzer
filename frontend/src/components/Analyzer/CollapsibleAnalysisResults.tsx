@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ChevronDown, ChevronRight, Code, Shield, Zap, 
+  ChevronRight, Code, Shield, Zap, 
   Sparkles, CheckCircle, XCircle, AlertTriangle, 
-  Target, BookOpen, Copy, Star, TrendingUp
+  Target, Copy, Star
 } from 'lucide-react';
 import { Analysis } from '../../types';
 import { toast } from 'react-hot-toast';
@@ -164,7 +164,7 @@ export const CollapsibleAnalysisResults: React.FC<CollapsibleAnalysisResultsProp
                     <Star className="w-3 h-3 text-yellow-400 mx-auto mb-0.5" />
                     <p className="text-xs text-text-muted">Recommendations</p>
                     <p className="text-xs font-semibold text-text-primary">
-                      {analysis.analysis_results?.recommendations?.length || 0}
+                      {analysis.analysis_results?.security_analysis?.recommendations?.length || 0}
                     </p>
                   </div>
                 </div>

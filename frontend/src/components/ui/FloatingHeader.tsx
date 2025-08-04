@@ -1,5 +1,3 @@
-// /frontend/src/components/ui/FloatingHeader.tsx
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { LogOut, User, Settings, Zap } from 'lucide-react';

@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Sparkles, Upload, Send, FileCode, Paperclip,
-  Zap, Code, Play, Bug, Star, Shield // Removed 'Settings' as it was unused
+  Zap
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 

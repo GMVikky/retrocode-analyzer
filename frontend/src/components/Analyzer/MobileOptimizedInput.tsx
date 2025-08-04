@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Send, Upload, Code, Zap, Bug, Star, Play,
+  Send, Code, Zap, 
   ChevronUp, ChevronDown, Paperclip
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
